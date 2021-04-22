@@ -1,0 +1,13 @@
+version: '3'
+services:
+  cron-img-d:
+    image: cron-img-d
+    container_name: cron-img-d
+    build:
+       context: .
+       dockerfile: ./Dockerfile
+    volumes:
+      - ./entrypoint.sh:/usr/sbin/entrypoint.sh
+      - ./cron/:/etc/cron.d/
+      - ./files/:/root/files/
+    restart: on-failure
